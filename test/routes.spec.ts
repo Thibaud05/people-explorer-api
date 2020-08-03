@@ -34,7 +34,7 @@ test.group('explore route should', () => {
 
     await supertest(BASE_URL)
       .get('/explore/test')
-      .expect(200,expectedResponse)
+      .expect(200,JSON.stringify(expectedResponse))
   })
   test('use the cache for the second call with test param', async() => {
     stubTextRazor.withArgs('test').returns([]);
@@ -43,7 +43,7 @@ test.group('explore route should', () => {
 
     await supertest(BASE_URL)
       .get('/explore/test')
-      .expect(200,expectedResponse)
+      .expect(200,JSON.stringify(expectedResponse))
   })
 })
 
