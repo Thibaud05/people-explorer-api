@@ -1,0 +1,55 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Find people in text and get a people list with basic information and the list of similarities between this people.",
+    "version": "1.0.0",
+    "title": "People explorer API"
+  },
+  "host": "localhost:3333",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/explore/{text}": {
+      "get": {
+        "summary": "Find people in text",
+        "description": "",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "text",
+            "type": "string",
+            "format": "textarea",
+            "required": true,
+            "description": "text to explore.."
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/healthz": {
+      "get": {
+        "summary": "Health Checks",
+        "description": "Get the app and redis status",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    }
+  }
+}
