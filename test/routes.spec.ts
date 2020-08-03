@@ -26,8 +26,8 @@ const expectedResponse = {
 }
 
 let stubTextRazor = sinon.stub(PeopleExtractor, "textRazor").withArgs('test').returns(['Q1']);
-let stubGetWikiDataPeople = sinon.stub(PeopleDataAccess, "getWikiDataPeople").withArgs('Q1').returns(expectedResponse.people);
-let stubGetWikiDataSimilarities = sinon.stub(PeopleDataAccess, "getWikiDataSimilarities").withArgs('Q1').returns(expectedResponse.similarities);
+let stubGetWikiDataPeople = sinon.stub(PeopleDataAccess, "getWikiDataPeople").withArgs(['Q1']).returns(expectedResponse.people);
+let stubGetWikiDataSimilarities = sinon.stub(PeopleDataAccess, "getWikiDataSimilarities").withArgs(['Q1']).returns(expectedResponse.similarities);
 
 test.group('explore route should', () => {
   test('call PeopleDataAccess razor text with test param and return expectedResponse', async () => {
