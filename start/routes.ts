@@ -21,8 +21,23 @@
 import Route from '@ioc:Adonis/Core/Route'
 import HealthCheck from '@ioc:Adonis/Core/HealthCheck'
 
-Route.get('/', async () => {
-  return { hello: 'world' }
+import Redis from '@ioc:Adonis/Addons/Redis'
+import PeopleDataAccess from '@ioc:App/Services/PeopleDataAccess'
+import PeopleExtractor from '@ioc:App/Services/PeopleExtractor'
+
+Route.get('/explore/:text', async ({ params }) => {
+  var crypto = require('crypto');
+  let hash = crypto.createHash('md5').update(params.text).digest('hex')
+  const cacheResponse = await Redis.get(hash)
+  if(cacheResponse){
+    return cacheResponse
+  }
+  const personIds = PeopleExtractor.textRazor(params.text)
+  const people = PeopleDataAccess.getWikiDataPeople(personIds)
+  const similarities = PeopleDataAccess.getWikiDataSimilarities(personIds)
+  const response = JSON.stringify({people:people,similarities:similarities})
+  await Redis.set(hash, response)
+  return response
 })
 
 Route.get('/healthz', async ({ response }) => {
