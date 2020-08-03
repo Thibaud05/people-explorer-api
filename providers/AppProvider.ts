@@ -1,4 +1,6 @@
 import { IocContract } from '@adonisjs/fold'
+import PeopleExtractorService from 'App/Services/PeopleExtractorService'
+import PeopleDataAccessService from 'App/Services/PeopleDataAccessService'
 
 export default class AppProvider {
   constructor (protected $container: IocContract) {
@@ -9,7 +11,8 @@ export default class AppProvider {
   }
 
   public boot () {
-    // IoC container is ready
+    this.$container.singleton('App/Services/PeopleExtractor', () => new PeopleExtractorService())
+    this.$container.singleton('App/Services/PeopleDataAccess', () => new PeopleDataAccessService())
   }
 
   public shutdown () {
