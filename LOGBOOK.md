@@ -10,3 +10,6 @@
 * **2020-08-03 08:57 :** Add the redis container
 * **2020-08-03 09:30 :** Add the swagger ui container and do people-explorer-api specification (swagger.yml)
 * **2020-08-03 12:13 :** It's lunch time !
+* **2020-08-03 13:57 :** Class structure and interface
+* **2020-08-03 14:45 :** Writing tests
+* **2020-08-03 15:33 :** It is very hard to generate test data for sparql queries (wikidata) 
