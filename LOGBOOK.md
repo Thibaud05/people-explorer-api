@@ -4,4 +4,6 @@
 * **2020-08-03 06:05 :** First commit : add logbook
 * **2020-08-03 06:06 :** Go to the textrazor documentation
 * **2020-08-03 06:26 :** Go to the wikidata documentation
-* **2020-08-03 06:36 :** work on the architecture
+* **2020-08-03 06:36 :** Define the architecture
+* **2020-08-03 07:23 :** Define the local devloppement infrastrucure
+* **2020-08-03 08:14 :** Create the adonisJS api
