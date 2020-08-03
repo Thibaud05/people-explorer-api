@@ -7,3 +7,5 @@
 * **2020-08-03 06:36 :** Define the architecture
 * **2020-08-03 07:23 :** Define the local devloppement infrastrucure
 * **2020-08-03 08:14 :** Create the adonisJS api
+* **2020-08-03 08:57 :** Add the redis container
+* **2020-08-03 09:30 :** Add the swagger ui container and do people-explorer-api specification (swagger.json)
