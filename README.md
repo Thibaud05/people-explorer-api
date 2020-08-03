@@ -8,7 +8,7 @@ This api find people in text and return a people list with basic information and
 **People extractor service**
 This service consume textrazor API with a unofficial package https://github.com/wzbg/textrazor
 
-**People data acces service**
+**People data access service**
 This service call wikidata SPARQL Endpoint with axios
 
 **Cache service**
