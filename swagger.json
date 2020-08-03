@@ -1,36 +1,51 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.0",
   "info": {
     "description": "Find people in text and get a people list with basic information and the list of similarities between this people.",
     "version": "1.0.0",
     "title": "People explorer API"
   },
-  "host": "localhost:3333",
-  "schemes": [
-    "http"
+  "servers": [
+    {
+      "url": "http://localhost:3333",
+      "description": "Docker local server"
+    }
   ],
   "paths": {
     "/explore/{text}": {
       "get": {
         "summary": "Find people in text",
         "description": "",
-        "consumes": [
-          "application/x-www-form-urlencoded"
-        ],
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
             "name": "text",
-            "type": "string",
-            "format": "textarea",
+            "schema": {
+              "type": "string"
+            },
             "required": true,
             "description": "text to explore.."
           }
         ],
         "responses": {
+          "200": {
+            "description": "People list with basic information and the list of similarities between this people.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "people": {
+                      "$ref": "#/components/schemas/People"
+                    },
+                    "similarities": {
+                      "$ref": "#/components/schemas/Similarities"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "405": {
             "description": "Invalid input"
           }
@@ -41,13 +56,80 @@
       "get": {
         "summary": "Health Checks",
         "description": "Get the app and redis status",
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
-            "description": "successful operation"
+            "description": "the API is alive",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "healthy": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
           }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Person": {
+        "type": "object",
+        "properties": {
+          "wikidataId": {
+            "type": "string",
+            "description": "The person ID in wikidata."
+          },
+          "type": {
+            "type": "string",
+            "description": "The person type."
+          },
+          "label": {
+            "type": "string",
+            "description": "The person name."
+          },
+          "description": {
+            "type": "string",
+            "description": "The person description."
+          },
+          "image": {
+            "type": "string",
+            "description": "The person image url."
+          }
+        }
+      },
+      "Similarity": {
+        "type": "object",
+        "properties": {
+          "personWikidataId": {
+            "type": "string",
+            "description": "The person ID."
+          },
+          "similarPersonWikidataId": {
+            "type": "string",
+            "description": "The similar person ID in wikidata."
+          },
+          "similarity": {
+            "type": "string",
+            "description": "The similarity between the two people."
+          }
+        }
+      },
+      "People": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Person"
+        }
+      },
+      "Similarities": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Similarity"
         }
       }
     }
