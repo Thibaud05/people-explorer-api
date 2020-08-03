@@ -9,3 +9,19 @@ services:
     working_dir: /usr/src/app
     ports:
       - "3333:3333"
+    networks:
+      - people-explorer-api-network
+    depends_on:
+      - redis
+
+  redis:
+    container_name: people-explorer-api-redis
+    image: "redis:6.0-alpine"
+    ports:
+      - "6379:6379"
+    networks:
+      - people-explorer-api-network
+
+networks:
+  people-explorer-api-network:
+    driver: bridge
