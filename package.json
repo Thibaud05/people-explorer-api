@@ -10,6 +10,8 @@
   },
   "devDependencies": {
     "@adonisjs/assembler": "^2.0.0",
+    "@types/sinon": "^9.0.4",
+    "@types/supertest": "^2.0.10",
     "adonis-preset-ts": "^1.0.4",
     "eslint": "^7.6.0",
     "eslint-plugin-adonis": "^1.0.14",
@@ -17,6 +19,8 @@
     "get-port": "^5.1.1",
     "japa": "^3.1.1",
     "pino-pretty": "^4.1.0",
+    "sinon": "^9.0.2",
+    "supertest": "^4.0.2",
     "typescript": "^3.9.7",
     "youch": "^2.0.10",
     "youch-terminal": "^1.0.0"
