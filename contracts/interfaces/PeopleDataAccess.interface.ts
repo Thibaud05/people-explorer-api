@@ -1,6 +1,7 @@
 export default interface PeopleDataAccessInterface {
-    getWikiDataPeople(personWikidataId: string[]): object
-    fetchWikiDataPeople((personWikidataId: string[]): object
+    endpointUrl: string
+    getWikiDataPeople(personWikidataId: string[]): Promise<object>
+    fetchWikiDataPeople(personWikidataId: string[]): Promise<object>
     formatWikiDataPeople(object): object
     getWikiDataSimilarities(personWikidataId: string[]): object
     getPeopleQuery(personWikidataIds: string[]): string
