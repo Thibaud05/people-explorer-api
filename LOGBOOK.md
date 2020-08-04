@@ -16,3 +16,7 @@
 * **2020-08-03 17:36 :** The explore path correctly calls the cache and the services, nice day !
 * **2020-08-04 06:30 :** Starting the people extractor service and refactor the router later
 * **2020-08-04 07:10 :** The unoffical package dosen't work (not a surprise), instead i use the rest endpoint
+* **2020-08-04 08:12 :** BIG FAIL with stub cleanning XD - The unoffical package work 
+* **2020-08-04 08:56 :** I need to mockup the api razortext because free plan includes only 500 requests per day (15/500)
+* **2020-08-04 10:52 :** I want to add the razortext apikey to the env file but I made a big mistake in using the adonisJS 5 preview, the documentation is not complete! 
+I think I took too much risk for this exercise just for using typescript !
