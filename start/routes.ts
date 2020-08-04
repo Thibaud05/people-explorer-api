@@ -32,11 +32,12 @@ Route.get('/explore/:text', async ({ params }) => {
   if(cacheResponse){
     return cacheResponse
   }
-  const personIds = PeopleExtractor.textRazor(params.text)
+  let text = decodeURIComponent(params.text)
+  const personIds = await PeopleExtractor.textRazor(text)
   const people = PeopleDataAccess.getWikiDataPeople(personIds)
   const similarities = PeopleDataAccess.getWikiDataSimilarities(personIds)
   const response = JSON.stringify({people:people,similarities:similarities})
-  await Redis.set(hash, response)
+  //await Redis.set(hash, response)
   return response
 })
 
