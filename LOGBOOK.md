@@ -14,3 +14,5 @@
 * **2020-08-03 14:45 :** Writing tests
 * **2020-08-03 15:33 :** It is very hard to generate test data for sparql queries (wikidata) 
 * **2020-08-03 17:36 :** The explore path correctly calls the cache and the services, nice day !
+* **2020-08-04 06:30 :** Starting the people extractor service and refactor the router later
+* **2020-08-04 07:10 :** The unoffical package dosen't work (not a surprise), instead i use the rest endpoint
