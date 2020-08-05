@@ -1,5 +1,4 @@
 import test from 'japa'
-
 import PeopleDataAccess from '@ioc:App/Services/PeopleDataAccess'
 
 const wikiDataPeople = [
@@ -294,21 +293,20 @@ const wikiDataSimilarities = [
   }
 ]
 
-test.group('PeopleDataAccess fetchWikiDataPeople', () => {
-  test('should return expected people for id Q3052772 and Q22686', async (assert) => {
+test.group('PeopleDataAccess WikiDataPeople', () => {
+  test('get should return empty array for empty array', async (assert) => {
+    let expectedPeople = []
+    let people = await PeopleDataAccess.getWikiDataPeople([])
+    assert.deepEqual(people, expectedPeople)
+  })
+
+  test('fetch should return expected people for id Q3052772 and Q22686', async (assert) => {
     let expectedPeople = wikiDataPeople
     let people = await PeopleDataAccess.fetchWikiDataPeople(['Q3052772', 'Q22686'])
     assert.deepEqual(people, expectedPeople)
   })
-  test('should return empty array for empty array', async (assert) => {
-    let expectedPeople = []
-    let people = await PeopleDataAccess.fetchWikiDataPeople([])
-    assert.deepEqual(people, expectedPeople)
-  })
-})
 
-test.group('PeopleDataAccess formatWikiDataPeople', () => {
-  test('should format expected people for id Q3052772 and Q22686', async (assert) => {
+  test('format should format expected people for id Q3052772 and Q22686', async (assert) => {
     let expectedPeople = [
       {
         "wikidataId": "http://www.wikidata.org/entity/Q3052772",
@@ -330,22 +328,13 @@ test.group('PeopleDataAccess formatWikiDataPeople', () => {
   })
 })
 
-/*test.group('PeopleDataAccess getWikiDataSimilarities', () => {
-  test('should return expected expected similarities for id Q3 and Q33', (assert) => {
-    let similarities = PeopleDataAccess.getWikiDataSimilarities(['Q3', 'Q33'])
-   // assert.deepEqual(similarities, expectedSimilarities)
-  })
-})*/
-
-test.group('PeopleDataAccess fetchWikiDataSimilarities', () => {
-  test('should return expected similarities between Q3052772 and Q22686', (assert) => {
+test.group('PeopleDataAccess WikiDataSimilarities', () => {
+  test('fetch should return expected similarities between Q3052772 and Q22686', async(assert) => {
     let expectedSimilarities = wikiDataSimilarities
-    let similarities = PeopleDataAccess.fetchWikiDataSimilarities(['Q3052772', 'Q22686'])
+    let similarities = await PeopleDataAccess.fetchWikiDataSimilarities(['Q3052772', 'Q22686'])
     assert.deepEqual(similarities, expectedSimilarities)
   })
-})
-test.group('PeopleDataAccess formatWikiDataSimilarities', () => {
-  test('should return expected similarities between Q3052772 and Q22686', (assert) => {
+  test('format should return expected similarities between Q3052772 and Q22686', (assert) => {
     let expectedSimilarities = [
       {
           personWikidataId: "http://www.wikidata.org/entity/Q22686",
