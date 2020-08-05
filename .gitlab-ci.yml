@@ -1,0 +1,30 @@
+image: docker:18-git
+
+services:
+  - docker:18-dind
+
+stages:
+  - build
+  - deploy
+
+build_production:
+  stage: build
+  script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - cp .env.production  .env
+    - docker pull $CI_REGISTRY_IMAGE/production:latest || true
+    - docker build --cache-from $CI_REGISTRY_IMAGE/production:latest --tag $CI_REGISTRY_IMAGE/production:$CI_COMMIT_SHA --tag $CI_REGISTRY_IMAGE/production:latest .
+    - docker push $CI_REGISTRY_IMAGE/production:$CI_COMMIT_SHA
+    - docker push $CI_REGISTRY_IMAGE/production:latest
+  only:
+    - master
+
+deploy_production:
+  stage: deploy
+  image: segecodigital/awsebcli:latest
+  environment: production
+  script:
+    - bash .gitlab-deploy.sh
+    - eb deploy people-explorer-api-production
+  only:
+    - master

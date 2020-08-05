@@ -1,0 +1,20 @@
+branch-defaults:
+  master:
+    environment: people-explorer-api-production
+environment-defaults:
+  people-explorer-api-production:
+    branch: null
+    repository: null
+global:
+  application_name: people-explorer-api
+  default_ec2_keyname: null
+  default_platform: arn:aws:elasticbeanstalk:eu-west-3::platform/Docker running on
+    64bit Amazon Linux/2.12.10
+  default_region: eu-west-3
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: eb-cli
+  sc: git
+  workspace_type: Application

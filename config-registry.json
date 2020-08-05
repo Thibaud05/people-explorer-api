@@ -1,0 +1,7 @@
+{
+    "registry.gitlab.com" :
+    {
+      "auth" : "your_gitlab_key_here",
+      "email" : "your_gitlab_email"
+    }
+  }

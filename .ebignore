@@ -1,0 +1,4 @@
+# Other files
+*
+!Dockerrun.aws.json
+!.ebextensions/*

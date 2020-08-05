@@ -1,0 +1,12 @@
+# Node modules
+node_modules
+
+# Other environement
+.env.*
+
+# Gitlab file
+.gitlab*
+
+# Docker file
+docker-compose.yml
+Dockerfile

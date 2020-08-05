@@ -1,0 +1,16 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Authentication": {
+    "Bucket": "people-explorer-api-docker-config",
+    "Key": "config-registry.json"
+  },
+  "Image": {
+    "Name": "registry.gitlab.com/xxx/people-explorer-api/production:latest",
+    "Update": "true"
+  },
+  "Ports": [
+    {
+      "ContainerPort": "3333"
+    }
+  ]
+}

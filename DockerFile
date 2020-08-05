@@ -1,0 +1,18 @@
+# Base Image
+FROM node:14.7
+
+RUN useradd --user-group --create-home --shell /bin/false app
+ENV HOME=/home/app
+
+COPY . $HOME
+
+RUN chown -R app:app $HOME/*
+
+WORKDIR $HOME
+
+# Install pm2 and the node modules
+RUN yarn global add pm2 && yarn install
+
+EXPOSE 3333
+
+CMD ["pm2", "start", "server.ts"]
