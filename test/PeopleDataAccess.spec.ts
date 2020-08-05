@@ -1,5 +1,11 @@
 import test from 'japa'
 import PeopleDataAccess from '@ioc:App/Services/PeopleDataAccess'
+import deepEqualInAnyOrder from 'deep-equal-in-any-order'
+import chai from 'chai'
+
+// Add deepEqualInAnyOrder plugin
+chai.use(deepEqualInAnyOrder);
+const { expect } = chai;
 
 const wikiDataPeople = [
   {
@@ -329,10 +335,10 @@ test.group('PeopleDataAccess WikiDataPeople', () => {
 })
 
 test.group('PeopleDataAccess WikiDataSimilarities', () => {
-  test('fetch should return expected similarities between Q3052772 and Q22686', async(assert) => {
+  test('fetch should return expected similarities between Q3052772 and Q22686', async() => {
     let expectedSimilarities = wikiDataSimilarities
     let similarities = await PeopleDataAccess.fetchWikiDataSimilarities(['Q3052772', 'Q22686'])
-    assert.deepEqual(similarities, expectedSimilarities)
+    expect(similarities).to.deep.equalInAnyOrder(expectedSimilarities)
   })
   test('format should return expected similarities between Q3052772 and Q22686', (assert) => {
     let expectedSimilarities = [
