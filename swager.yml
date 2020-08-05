@@ -80,6 +80,9 @@ components:
         similarity:
           type: string
           description: The similarity between the two people.
+        similarityValue:
+          type: string
+          description : The value of the similarity between the two people.
     People: 
       type: array
       items:
