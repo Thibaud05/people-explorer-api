@@ -39,6 +39,7 @@ test.group('PeopleExtractor textRazor', (group) => {
   })
 
   test('should throw exception if invlalid TextRazor API Key', async(assert) => {
+    sinon.stub(process.env, 'TEXTRAZOR_API_KEY').value('badKey')
     assert.plan(1)
 
     try {
