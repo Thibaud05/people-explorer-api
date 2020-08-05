@@ -52,3 +52,21 @@ docker exec -it people-explorer-api bash
 # And Run the people-explorer-api test
 yarn test
 ```
+
+## Production environement
+I choose to use a docker PaaS in production.
+AWS elastic beanstalk is used for manage the app in production.
+
+**Requirement:**
+* AWS account
+* AWS ElastiCache Redis cluster
+* Gitlab Account for CI
+
+1. Update the .env.production file
+2. Create an AWS elastic beanstalk docker app ```people-explorer-api``` with a ```people-explorer-api-production``` environement
+3. Create as S3 ```config-registry.json``` in a ```people-explorer-api-docker-config``` bucket for use gitlab registry in AWS
+4. Create a ```people-explorer-api``` gitlab repository
+5. Update ```Dockerrun.aws.json``` with your gitlab repository path
+6. Set your $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY in your gitlab environent variable
+7. Push on your gitlab repository
+8. Go to the elasticbeanstalk environement url
