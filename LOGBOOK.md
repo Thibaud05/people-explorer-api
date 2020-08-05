@@ -25,3 +25,5 @@ I think I took too much risk for this exercise just for using typescript !
 * **2020-08-04 17:00 :** Next step find similaries with sparql, I will work on that tomorrow.
 * **2020-08-05 06:27 :** Day 3 : ready for find similaries with sparql
 * **2020-08-05 07:19 :** Yes, I finished my request to find all the similarities
+* **2020-08-05 09:03 :** Minimal unit test completed, start end to end test ...
+* **2020-08-05 09:33 :** Fix completed, prepare for stagging
