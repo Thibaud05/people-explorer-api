@@ -30,14 +30,14 @@ Route.get('/explore/:text', async ({ params }) => {
   let hash = crypto.createHash('md5').update(params.text).digest('hex')
   const cacheResponse = await Redis.get(hash)
   if(cacheResponse){
-    return cacheResponse
+    return JSON.parse(cacheResponse)
   }
   let text = decodeURIComponent(params.text)
   const personIds = await PeopleExtractor.textRazor(text)
-  const people = PeopleDataAccess.getWikiDataPeople(personIds)
-  const similarities = PeopleDataAccess.getWikiDataSimilarities(personIds)
-  const response = JSON.stringify({people:people,similarities:similarities})
-  //await Redis.set(hash, response)
+  const people = await PeopleDataAccess.getWikiDataPeople(personIds)
+  const similarities = await PeopleDataAccess.getWikiDataSimilarities(personIds)
+  const response = {people:people,similarities:similarities}
+  await Redis.set(hash, JSON.stringify(response))
   return response
 })
 
