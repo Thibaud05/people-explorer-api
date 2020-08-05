@@ -4,63 +4,303 @@ import PeopleDataAccess from '@ioc:App/Services/PeopleDataAccess'
 
 const wikiDataPeople = [
   {
-      "people": {
-          "type": "uri",
-          "value": "http://www.wikidata.org/entity/Q3052772"
-      },
-      "peopleLabel": {
-          "xml:lang": "en",
-          "type": "literal",
-          "value": "Emmanuel Macron"
-      },
-      "typeLabel": {
-          "xml:lang": "en",
-          "type": "literal",
-          "value": "human",
-      },
-      "imageLabel": {
-          "type": "literal",
-          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Emmanuel%20Macron%20%28cropped%29.jpg"
-      },
-      "birthdateLabel": {
-          "type": "literal",
-          "value": "1977-12-21T00:00:00Z"
-      }
+    "people": {
+      "type": "uri",
+      "value": "http://www.wikidata.org/entity/Q3052772"
+    },
+    "peopleLabel": {
+      "xml:lang": "en",
+      "type": "literal",
+      "value": "Emmanuel Macron"
+    },
+    "typeLabel": {
+      "xml:lang": "en",
+      "type": "literal",
+      "value": "human",
+    },
+    "imageLabel": {
+      "type": "literal",
+      "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Emmanuel%20Macron%20%28cropped%29.jpg"
+    },
+    "birthdateLabel": {
+      "type": "literal",
+      "value": "1977-12-21T00:00:00Z"
+    }
   },
   {
-      "people": {
+    "people": {
+      "type": "uri",
+      "value": "http://www.wikidata.org/entity/Q22686"
+    },
+    "peopleLabel": {
+      "xml:lang": "en",
+      "type": "literal",
+      "value": "Donald Trump"
+    },
+    "typeLabel": {
+      "xml:lang": "en",
+      "type": "literal",
+      "value": "human",
+    },
+    "imageLabel": {
+      "type": "literal",
+      "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Donald%20Trump%20official%20portrait.jpg"
+    },
+    "birthdateLabel": {
+      "type": "literal",
+      "value": "1946-06-14T00:00:00Z"
+    }
+  }
+]
+
+const wikiDataSimilarities = [
+  {
+      "person": {
           "type": "uri",
           "value": "http://www.wikidata.org/entity/Q22686"
       },
-      "peopleLabel": {
+      "similarPerson": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3052772"
+      },
+      "propLabel": {
           "xml:lang": "en",
           "type": "literal",
-          "value": "Donald Trump"
+          "value": "sex or gender"
       },
-      "typeLabel": {
+      "valueLabel": {
           "xml:lang": "en",
           "type": "literal",
-          "value": "human",
+          "value": "male"
+      }
+  },
+  {
+      "person": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q22686"
       },
-      "imageLabel": {
-          "type": "literal",
-          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Donald%20Trump%20official%20portrait.jpg"
+      "similarPerson": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3052772"
       },
-      "birthdateLabel": {
+      "propLabel": {
+          "xml:lang": "en",
           "type": "literal",
-          "value": "1946-06-14T00:00:00Z"
+          "value": "instance of"
+      },
+      "valueLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "human"
+      }
+  },
+  {
+      "person": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q22686"
+      },
+      "similarPerson": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3052772"
+      },
+      "propLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "eye color"
+      },
+      "valueLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "blue"
+      }
+  },
+  {
+      "person": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3052772"
+      },
+      "similarPerson": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q22686"
+      },
+      "propLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "sex or gender"
+      },
+      "valueLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "male"
+      }
+  },
+  {
+      "person": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3052772"
+      },
+      "similarPerson": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q22686"
+      },
+      "propLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "instance of"
+      },
+      "valueLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "human"
+      }
+  },
+  {
+      "person": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q22686"
+      },
+      "similarPerson": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3052772"
+      },
+      "propLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "languages spoken, written or signed"
+      },
+      "valueLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "English"
+      }
+  },
+  {
+      "person": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q22686"
+      },
+      "similarPerson": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3052772"
+      },
+      "propLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "preferred pronoun"
+      },
+      "valueLabel": {
+          "type": "literal",
+          "value": "L485"
+      }
+  },
+  {
+      "person": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q22686"
+      },
+      "similarPerson": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3052772"
+      },
+      "propLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "writing languages"
+      },
+      "valueLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "English"
+      }
+  },
+  {
+      "person": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3052772"
+      },
+      "similarPerson": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q22686"
+      },
+      "propLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "eye color"
+      },
+      "valueLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "blue"
+      }
+  },
+  {
+      "person": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3052772"
+      },
+      "similarPerson": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q22686"
+      },
+      "propLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "languages spoken, written or signed"
+      },
+      "valueLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "English"
+      }
+  },
+  {
+      "person": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3052772"
+      },
+      "similarPerson": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q22686"
+      },
+      "propLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "preferred pronoun"
+      },
+      "valueLabel": {
+          "type": "literal",
+          "value": "L485"
+      }
+  },
+  {
+      "person": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3052772"
+      },
+      "similarPerson": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q22686"
+      },
+      "propLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "writing languages"
+      },
+      "valueLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "English"
       }
   }
 ]
 
-
 test.group('PeopleDataAccess fetchWikiDataPeople', () => {
-  test('should return expected people for id Q3052772 and Q22686', async(assert) => {
+  test('should return expected people for id Q3052772 and Q22686', async (assert) => {
     let expectedPeople = wikiDataPeople
-    let people = await PeopleDataAccess.fetchWikiDataPeople(['Q3052772','Q22686'])
+    let people = await PeopleDataAccess.fetchWikiDataPeople(['Q3052772', 'Q22686'])
     assert.deepEqual(people, expectedPeople)
   })
-  test('should return empty array for empty array', async(assert) => {
+  test('should return empty array for empty array', async (assert) => {
     let expectedPeople = []
     let people = await PeopleDataAccess.fetchWikiDataPeople([])
     assert.deepEqual(people, expectedPeople)
@@ -68,21 +308,21 @@ test.group('PeopleDataAccess fetchWikiDataPeople', () => {
 })
 
 test.group('PeopleDataAccess formatWikiDataPeople', () => {
-  test('should format expected people for id Q3052772 and Q22686', async(assert) => {
+  test('should format expected people for id Q3052772 and Q22686', async (assert) => {
     let expectedPeople = [
       {
-        "wikidataId":"http://www.wikidata.org/entity/Q3052772",
-        "label":"Emmanuel Macron",
-        "type":"human",
-        "image":"http://commons.wikimedia.org/wiki/Special:FilePath/Emmanuel%20Macron%20%28cropped%29.jpg",
-        "birthdate":"1977-12-21T00:00:00Z"
+        "wikidataId": "http://www.wikidata.org/entity/Q3052772",
+        "label": "Emmanuel Macron",
+        "type": "human",
+        "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Emmanuel%20Macron%20%28cropped%29.jpg",
+        "birthdate": "1977-12-21T00:00:00Z"
       },
       {
-        "wikidataId":"http://www.wikidata.org/entity/Q22686",
-        "label":"Donald Trump",
-        "type":"human",
-        "image":"http://commons.wikimedia.org/wiki/Special:FilePath/Donald%20Trump%20official%20portrait.jpg",
-        "birthdate":"1946-06-14T00:00:00Z"
+        "wikidataId": "http://www.wikidata.org/entity/Q22686",
+        "label": "Donald Trump",
+        "type": "human",
+        "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Donald%20Trump%20official%20portrait.jpg",
+        "birthdate": "1946-06-14T00:00:00Z"
       }
     ]
     let people = await PeopleDataAccess.formatWikiDataPeople(wikiDataPeople)
@@ -90,26 +330,97 @@ test.group('PeopleDataAccess formatWikiDataPeople', () => {
   })
 })
 
-test.group('PeopleDataAccess getWikiDataSimilarities', () => {
+/*test.group('PeopleDataAccess getWikiDataSimilarities', () => {
   test('should return expected expected similarities for id Q3 and Q33', (assert) => {
+    let similarities = PeopleDataAccess.getWikiDataSimilarities(['Q3', 'Q33'])
+   // assert.deepEqual(similarities, expectedSimilarities)
+  })
+})*/
+
+test.group('PeopleDataAccess fetchWikiDataSimilarities', () => {
+  test('should return expected similarities between Q3052772 and Q22686', (assert) => {
+    let expectedSimilarities = wikiDataSimilarities
+    let similarities = PeopleDataAccess.fetchWikiDataSimilarities(['Q3052772', 'Q22686'])
+    assert.deepEqual(similarities, expectedSimilarities)
+  })
+})
+test.group('PeopleDataAccess formatWikiDataSimilarities', () => {
+  test('should return expected similarities between Q3052772 and Q22686', (assert) => {
     let expectedSimilarities = [
       {
-        personWikidataId: "Q3052772",
-        similarPersonWikidataId: "Q33",
-        similarity: "age",
+          personWikidataId: "http://www.wikidata.org/entity/Q22686",
+          similarPersonWikidataId: "http://www.wikidata.org/entity/Q3052772",
+          similarity: "sex or gender",
+          similarityValue: "male"
       },
       {
-        personWikidataId: "Q3",
-        similarPersonWikidataId: "Q33",
-        similarity: "job",
+          personWikidataId: "http://www.wikidata.org/entity/Q22686",
+          similarPersonWikidataId: "http://www.wikidata.org/entity/Q3052772",
+          similarity: "instance of",
+          similarityValue: "human"
       },
       {
-        personWikidataId: "Q3",
-        similarPersonWikidataId: "Q33",
-        similarity: "nationality",
+          personWikidataId: "http://www.wikidata.org/entity/Q22686",
+          similarPersonWikidataId: "http://www.wikidata.org/entity/Q3052772",
+          similarity: "eye color",
+          similarityValue: "blue"
+      },
+      {
+          personWikidataId: "http://www.wikidata.org/entity/Q3052772",
+          similarPersonWikidataId: "http://www.wikidata.org/entity/Q22686",
+          similarity: "sex or gender",
+          similarityValue: "male"
+      },
+      {
+          personWikidataId: "http://www.wikidata.org/entity/Q3052772",
+          similarPersonWikidataId: "http://www.wikidata.org/entity/Q22686",
+          similarity: "instance of",
+          similarityValue: "human"
+      },
+      {
+          personWikidataId: "http://www.wikidata.org/entity/Q22686",
+          similarPersonWikidataId: "http://www.wikidata.org/entity/Q3052772",
+          similarity: "languages spoken, written or signed",
+          similarityValue: "English"
+      },
+      {
+          personWikidataId: "http://www.wikidata.org/entity/Q22686",
+          similarPersonWikidataId: "http://www.wikidata.org/entity/Q3052772",
+          similarity: "preferred pronoun",
+          similarityValue: "L485"
+      },
+      {
+          personWikidataId: "http://www.wikidata.org/entity/Q22686",
+          similarPersonWikidataId: "http://www.wikidata.org/entity/Q3052772",
+          similarity: "writing languages",
+          similarityValue: "English"
+      },
+      {
+          personWikidataId: "http://www.wikidata.org/entity/Q3052772",
+          similarPersonWikidataId: "http://www.wikidata.org/entity/Q22686",
+          similarity: "eye color",
+          similarityValue: "blue"
+      },
+      {
+          personWikidataId: "http://www.wikidata.org/entity/Q3052772",
+          similarPersonWikidataId: "http://www.wikidata.org/entity/Q22686",
+          similarity: "languages spoken, written or signed",
+          similarityValue: "English"
+      },
+      {
+          personWikidataId: "http://www.wikidata.org/entity/Q3052772",
+          similarPersonWikidataId: "http://www.wikidata.org/entity/Q22686",
+          similarity: "preferred pronoun",
+          similarityValue: "L485"
+      },
+      {
+          personWikidataId: "http://www.wikidata.org/entity/Q3052772",
+          similarPersonWikidataId: "http://www.wikidata.org/entity/Q22686",
+          similarity: "writing languages",
+          similarityValue: "English"
       }
-    ]
-    let similarities = PeopleDataAccess.getWikiDataSimilarities(['Q3','Q33'])
+  ]
+    let similarities = PeopleDataAccess.formatWikiDataSimilarities(wikiDataSimilarities)
     assert.deepEqual(similarities, expectedSimilarities)
   })
 })
