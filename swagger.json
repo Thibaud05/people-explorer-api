@@ -12,7 +12,7 @@
     }
   ],
   "paths": {
-    "/explore/{text}": {
+    "/{text}": {
       "get": {
         "summary": "Find people in text",
         "description": "",
@@ -46,8 +46,14 @@
               }
             }
           },
-          "405": {
-            "description": "Invalid input"
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Person not found"
           }
         }
       }
@@ -93,9 +99,9 @@
             "type": "string",
             "description": "The person name."
           },
-          "description": {
+          "birthdate": {
             "type": "string",
-            "description": "The person description."
+            "description": "The person birthdate."
           },
           "image": {
             "type": "string",
@@ -108,7 +114,7 @@
         "properties": {
           "personWikidataId": {
             "type": "string",
-            "description": "The person ID."
+            "description": "The person ID  in wikidata."
           },
           "similarPersonWikidataId": {
             "type": "string",
