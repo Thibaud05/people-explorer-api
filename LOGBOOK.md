@@ -27,3 +27,4 @@ I think I took too much risk for this exercise just for using typescript !
 * **2020-08-05 07:19 :** Yes, I finished my request to find all the similarities
 * **2020-08-05 09:03 :** Minimal unit test completed, start end to end test ...
 * **2020-08-05 09:33 :** Fix completed, prepare for stagging
+* **2020-08-05 11:52 :** The api is in production ! Next step : work on refactoring
