@@ -11,8 +11,12 @@ RUN chown -R app:app $HOME/*
 WORKDIR $HOME
 
 # Install pm2 and the node modules
-RUN yarn global add pm2 && yarn install
+RUN yarn global add pm2 && yarn install 
+RUN pm2 install typescript
 
 EXPOSE 3333
 
 CMD ["pm2", "start", "server.ts"]
+
+
+#- pm2 start --interpreter babel-node index.es6
