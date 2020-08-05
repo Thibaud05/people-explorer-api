@@ -33,23 +33,22 @@ test.group('explore route should', (group) => {
     sinon.restore()
   }) 
 
-
   test('call PeopleDataAccess razor text with test param and return expectedResponse', async () => {
-    sinon.stub(PeopleExtractor, "textRazor").withArgs('test').returns(['Q1']);
-    sinon.stub(PeopleDataAccess, "getWikiDataPeople").withArgs(['Q1']).returns(expectedResponse.people);
-    sinon.stub(PeopleDataAccess, "getWikiDataSimilarities").withArgs(['Q1']).returns(expectedResponse.similarities);
+    sinon.stub(PeopleExtractor, "textRazor").withArgs('test').returns(Promise.resolve(['Q1']));
+    sinon.stub(PeopleDataAccess, "getWikiDataPeople").withArgs(['Q1']).returns(Promise.resolve(expectedResponse.people))
+    sinon.stub(PeopleDataAccess, "getWikiDataSimilarities").withArgs(['Q1']).returns(Promise.resolve(expectedResponse.similarities))
     await supertest(BASE_URL)
       .get('/explore/test')
-      .expect(200,JSON.stringify(expectedResponse))
+      .expect(200,expectedResponse)
   })
   test('use the cache for the second call with test param', async() => {
-    sinon.stub(PeopleExtractor, "textRazor").withArgs('test').returns([]);
-    sinon.stub(PeopleDataAccess, "getWikiDataPeople").withArgs('Q1').returns([]);
-    sinon.stub(PeopleDataAccess, "getWikiDataSimilarities").withArgs('Q1').returns([]);
+    sinon.stub(PeopleExtractor, "textRazor").withArgs('test').returns(Promise.resolve([]));
+    sinon.stub(PeopleDataAccess, "getWikiDataPeople").withArgs(['Q1']).returns(Promise.resolve([]))
+    sinon.stub(PeopleDataAccess, "getWikiDataSimilarities").withArgs(['Q1']).returns(Promise.resolve([]))
 
     await supertest(BASE_URL)
       .get('/explore/test')
-      .expect(200,JSON.stringify(expectedResponse))
+      .expect(200,expectedResponse)
   })
 
 
