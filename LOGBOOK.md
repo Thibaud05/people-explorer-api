@@ -28,3 +28,5 @@ I think I took too much risk for this exercise just for using typescript !
 * **2020-08-05 09:03 :** Minimal unit test completed, start end to end test ...
 * **2020-08-05 09:33 :** Fix completed, prepare for stagging
 * **2020-08-05 11:52 :** The api is in production ! Next step : work on refactoring
+* **2020-08-05 14:12 :** I want move the main route code in a controller and rename the root in / instead /explore and add code response to the api
+* **2020-08-05 17:45 :** Day 3, I think I finished the first version of the API even if there is still a lot of refactoring to do, I loved playing with sparql and discovering textrazor
