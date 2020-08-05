@@ -98,7 +98,7 @@ export default class PeopleDataAccessService implements PeopleDataAccessInterfac
 
   async queryWikiData(sparqlQuery: string): Promise<object> {
 
-    const fullUrl = 'https://query.wikidata.org/sparql' + '?query=' + encodeURIComponent(sparqlQuery)
+    const fullUrl =  this.endpointUrl  + '?query=' + encodeURIComponent(sparqlQuery)
     const headers = { 'Accept': 'application/sparql-results+json' }
     const response = await axios.get(fullUrl, { headers })
     return response.data.results.bindings
