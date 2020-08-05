@@ -23,3 +23,4 @@ I think I took too much risk for this exercise just for using typescript !
 * **2020-08-04 13:40 :** Lost in wikidata list of properties, I try to make the sparql request to retrieve additional informations.
 * **2020-08-04 16:07 :** I have finished my first sparql query with unit testing WTF, I love it.
 * **2020-08-04 17:00 :** Next step find similaries with sparql, I will work on that tomorrow.
+* **2020-08-05 06:27 :** Day 3 : ready for find similaries with sparql
